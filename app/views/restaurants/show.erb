@@ -33,10 +33,10 @@
 <% if logged_in? && Review.where(reviewer: current_user, restaurant: @restaurant).count == 0 %>
   <form action="/reviews" method="post">
     <input type="hidden" name="review[reviewer_id]" value="<%= current_user.id %>" />
-    <input type="hidden" name="review[restaurant_id]" value="<%= @restaurant.id %>" />
-    <input type="text" name="review[title]" placeholder="Enter the Review Title" />
-    <textarea name="review[body]" placeholder="Enter your review here" /></textarea>
-    <input type="range" name="review[rating]" min="1" max="5" placeholder="Rating" />
+    <input type="hidden" name="review[restaurant_id]" value="<%= @restaurant.id %>" /><br />
+    <input type="text" name="review[title]" placeholder="Enter the Review Title" /><br />
+    <textarea name="review[body]" placeholder="Enter your review here" /></textarea><br />
+    <input type="range" name="review[rating]" min="1" max="5" placeholder="Rating" /><br />
 
     <input type="submit" value="Submit Review" />
   </form>

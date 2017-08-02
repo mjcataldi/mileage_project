@@ -41,4 +41,24 @@ nav ul, nav ul li {
     border-bottom: 1px solid red;
   }
 
+body {
+  background-color: gray;
+}
 
+main {
+  margin: 0px;
+  padding: 10px 50px;
+  padding-bottom: 25px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input {
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+
+  input:hover {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.35);
+  }
