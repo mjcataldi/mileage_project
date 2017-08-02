@@ -1,0 +1,16 @@
+<h2>Reviews</h2>
+
+<table>
+  <tr>
+    <td>Review</td>
+    <td>Restaurant</td>
+    <td>Author</td>
+  </tr>
+<% @reviews.each do |review| %>
+  <tr>
+    <td><a href="/reviews/<%= review.id %>"><%= review.title %></a></td>
+    <td><a href="/restaurants/<%= review.restaurant.id %>"><%= review.restaurant.name %></a></td>
+    <td><a href="/users/<%= review.reviewer.id %>"><%= review.reviewer.username %></a></td>
+  </tr>
+<% end %>
+</table>

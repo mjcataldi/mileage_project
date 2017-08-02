@@ -1,0 +1,22 @@
+<header>
+  <div id="header">
+    <h1>Restaurant Beat</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li> |
+        <% if logged_in? %>
+          <li><a href="/users/<%= current_user.id %>">Profile</a></li> |
+          <li><a href="/sessions/<%= current_user.id %>">Logout</a></li>
+        <% else %>
+          <li><a href="/users/new">Register</a></li> |
+          <li><a href="/sessions/new">Login</a></li>
+        <% end %>
+      </ul>
+
+      <ul>
+        <li><a href="/restaurants">Restaurants</a></li> |
+        <li><a href="/reviews">Reviews</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

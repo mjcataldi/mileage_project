@@ -1,0 +1,30 @@
+<h2>Restaurant Page</h2>
+
+<table>
+  <tr><td>Restaurant Name</td><td><%= @restaurant.name %></td></tr>
+  <tr><td>Restaurant Owner</td><td><a href="/users/<%= @restaurant.owner.id %>"><%= @restaurant.owner.full_name %></a></td></tr>
+  <tr><td>Cuisine</td><td><%= @restaurant.cuisine %></td></tr>
+  <tr><td>Address</td><td><%= @restaurant.address %></td></tr>
+  <tr><td>City</td><td><%= @restaurant.city %></td></tr>
+  <tr><td>State</td><td><%= @restaurant.state %></td></tr>
+  <tr><td>Zipcode</td><td><%= @restaurant.zip %></td></tr>
+</table>
+
+<% if @restaurant.reviews.count > 0 %>
+  <% @restaurant.reviews.each do |review| %>
+    <div>
+      <h3><%= review.title %> <small>Rating: <%= review.rating %>/5 </small></h3>
+      <p><%= review.body %></p>
+    </div>
+  <% end %>
+<% end %>
+
+
+<br />
+<% if current_user == @restaurant.owner %>
+  <a href="/restaurants/<%= @restaurant.id %>/edit">Edit Restaurant</a> |
+  <form action="/restaurants/<%= @restaurant.id %>" method="post" class="button-link-form">
+    <input type="hidden" value="delete" name="_method" />
+    <input type="submit" value="Delete Restaurant" class="button-link delete"/>
+  </form>
+<% end %>

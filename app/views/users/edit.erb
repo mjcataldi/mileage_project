@@ -1,0 +1,6 @@
+<h2>Edit Profile</h2>
+<form action="/users/#{@user.id}" method="post">
+  <input type="hidden" value="put" name="_method" />
+  <%= erb :"/users/_form_fields", layout:false, locals: { @user: @user } %>
+  <input type="submit" value="Update Profile" />
+</form>

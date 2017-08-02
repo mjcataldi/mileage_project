@@ -1,0 +1,42 @@
+.container {
+  margin: 0 auto;
+  width: 760px;
+}
+
+nav ul, nav ul li {
+  list-style-type: none;
+  display: inline;
+  padding: 5px;
+}
+
+.errors {
+  list-style-type: none;
+  color: red;
+}
+
+.button-link-form {
+  display: inline;
+}
+
+.button-link {
+  margin: 0px;
+  display: inline;
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+  .button-link:hover {
+    border-bottom: 1px solid #444;
+  }
+
+.delete {
+  color: red;
+}
+
+  .delete:hover {
+    border-bottom: 1px solid red;
+  }

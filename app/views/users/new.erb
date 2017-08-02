@@ -1,0 +1,5 @@
+<h2>Register</h2>
+  <form action="/users" method="post">
+    <%= erb :"/users/_form_fields", layout:false, locals: { @user: @users } %>
+    <input type="submit" value="Register" />
+  </form>

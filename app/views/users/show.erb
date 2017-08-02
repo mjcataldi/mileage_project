@@ -1,0 +1,33 @@
+<h2>Profile Page</h2>
+
+<div class="profile-information">
+  <table>
+    <tr><td>Username</td><td><%= @user.username %></td></tr>
+    <tr><td>Email</td><td><%= @user.email %></td></tr>
+  </table>
+</div>
+
+<% if @user.restaurants.count > 0 %>
+  <div class="profile-restaurants">
+    <ul>
+      <% @user.restaurants.each do |restaurant| %>
+        <li><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <h3>Oh no, you don't have any restaurants!  Let's fix that!</h3>
+<% end %>
+<a href="/restaurants/new">Add a Restaurant!</a>
+
+<% if @user.reviews.count > 0 %>
+<div class="profile-reviews">
+  <h3>Reviews Posted</h3>
+  <% @user.reviews.each do |review| %>
+  <ul>
+    <li style="list-style-type: none;"><a href="/reviews/<%= review.id %>"><%= review.title %></a></li>
+  </ul>
+  <% end %>
+</div>
+
+<% end %>
