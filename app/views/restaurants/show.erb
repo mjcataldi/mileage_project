@@ -1,4 +1,4 @@
-<h2>Restaurant Page</h2>
+<h2>Restaurant Info Page</h2>
 
 <table>
   <tr><td>Restaurant Name</td><td><%= @restaurant.name %></td></tr>
@@ -11,14 +11,15 @@
 </table>
 
 <% if @restaurant.reviews.count > 0 %>
+  <h3>REVIEWS</h3>
   <% @restaurant.reviews.each do |review| %>
     <div>
-      <h3><%= review.title %> <small>Rating: <%= review.rating %>/5 </small></h3>
+      <h3><a href="/reviews/<%= review.id %>"><%= review.title %></a> <small>Rating: <%= review.rating %>/5 </small></h3>
       <p><%= review.body %></p>
+      <small>Posted by <a href="/users/<%= review.reviewer.id %>"><%= review.reviewer.username %></a> on <%= review.created_at.strftime("%c") %></small>
     </div>
   <% end %>
 <% end %>
-
 
 <br />
 <% if current_user == @restaurant.owner %>
@@ -26,5 +27,17 @@
   <form action="/restaurants/<%= @restaurant.id %>" method="post" class="button-link-form">
     <input type="hidden" value="delete" name="_method" />
     <input type="submit" value="Delete Restaurant" class="button-link delete"/>
+  </form>
+<% end %>
+
+<% if logged_in? && Review.where(reviewer: current_user, restaurant: @restaurant).count == 0 %>
+  <form action="/reviews" method="post">
+    <input type="hidden" name="review[reviewer_id]" value="<%= current_user.id %>" />
+    <input type="hidden" name="review[restaurant_id]" value="<%= @restaurant.id %>" />
+    <input type="text" name="review[title]" placeholder="Enter the Review Title" />
+    <textarea name="review[body]" placeholder="Enter your review here" /></textarea>
+    <input type="range" name="review[rating]" min="1" max="5" placeholder="Rating" />
+
+    <input type="submit" value="Submit Review" />
   </form>
 <% end %>

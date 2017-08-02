@@ -1,3 +1,19 @@
+def add_user_info(user)
+  if user.password == params[:password_confirmation]
+    if user.save
+      session[:user_id] = user.id
+      redirect "/users/#{@user.id}"
+    else
+      @errors = user.errors.full_messages
+      erb :"/users/new"
+    end
+  else
+    @errors = ["Oops, your passwords did not match. Try again!"]
+    erb :"/users/new"
+  end
+end
+
+
 get "/users" do
   @users = User.all
 
@@ -5,7 +21,7 @@ get "/users" do
 end
 
 post "/users" do
-  @user.update_attributes(params[:user])
+  @user = User.new(params[:user])
 
   if @user.password == params[:password_confirmation]
     if @user.save
@@ -42,9 +58,18 @@ end
 
 put "/users/:id" do
   @user = User.find(params[:id])
-  @user.update(params[:user])
 
-  redirect "/users/edit"
+  if @user.password == params[:password_confirmation]
+    if @user.update(params[:user])
+      redirect "/users/#{@user.id}"
+    else
+      @errors = @user.errors.full_messages
+      erb :"/users/edit"
+    end
+  else
+    @errors = ["Oops, your passwords did not match. Try again!"]
+    erb :"/users/edit"
+  end
 end
 
 delete "/users/:id" do

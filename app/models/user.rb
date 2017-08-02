@@ -8,9 +8,13 @@ class User < ActiveRecord::Base
 
   def full_name
     name_array = self.username.split(".")
-    "#{name_array[0].capitalize} #{name_array[1].capitalize}"
-  end
+    full_name = ""
 
+    name_array.each do |name|
+      full_name += "#{name.capitalize} "
+    end
+    full_name.strip!
+  end
 
   def password
     @password ||= BCrypt::Password.new(password_hash)

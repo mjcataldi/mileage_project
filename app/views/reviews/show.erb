@@ -1,5 +1,6 @@
 <h2>Show Review</h2>
 
+<h3><a href="/restaurants/<%= @review.restaurant.id %>"><%= @review.restaurant.name %></a></h3>
 <h3><%= @review.title %> <small>Rating: <%= @review.rating %>/5</small></h3>
 <p><%= @review.body %></p>
 

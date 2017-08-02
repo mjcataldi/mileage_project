@@ -16,12 +16,6 @@ post "/reviews" do
 
 end
 
-get "/reviews/new" do
-  @review = Review.new
-
-  erb :"/reviews/new"
-end
-
 get "/reviews/:id" do
   @review = Review.find(params[:id])
 

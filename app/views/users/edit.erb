@@ -1,6 +1,10 @@
 <h2>Edit Profile</h2>
-<form action="/users/#{@user.id}" method="post">
+<form action="/users/<%= @user.id %>" method="post">
   <input type="hidden" value="put" name="_method" />
-  <%= erb :"/users/_form_fields", layout:false, locals: { @user: @user } %>
+  <input type="text" name="user[username]" placeholder="Username" value="<%= @user.username %>" />
+  <input type="email" name="user[email]" placeholder="Email" value="<%= @user.email %>"/>
+  <input type="password" name="user[password]" placeholder="Password" />
+  <input type="password" name="password_confirmation" placeholder="Password Confirm" />
+
   <input type="submit" value="Update Profile" />
 </form>

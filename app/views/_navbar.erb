@@ -5,7 +5,7 @@
       <ul>
         <li><a href="/">Home</a></li> |
         <% if logged_in? %>
-          <li><a href="/users/<%= current_user.id %>">Profile</a></li> |
+          <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li> |
           <li><a href="/sessions/<%= current_user.id %>">Logout</a></li>
         <% else %>
           <li><a href="/users/new">Register</a></li> |
