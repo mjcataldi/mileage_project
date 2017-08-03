@@ -1,4 +1,4 @@
 get "/" do
 
-  redirect :"/restaurants"
+  erb :"/index"
 end

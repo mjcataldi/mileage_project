@@ -5,14 +5,12 @@
     <td>Id</td>
     <td>Username</td>
     <td>Email</td>
-    <td>Restaurant Count</td>
   </tr>
 <% @users.each do |user | %>
   <tr>
     <td><%= user.id %></td>
     <td><%= user.username %></td>
     <td><%= user.email %></td>
-    <td><%= user.restaurants.count %></td>
   </tr>
 <% end %>
 </table>
