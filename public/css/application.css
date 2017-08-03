@@ -62,3 +62,7 @@ input {
   input:hover {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.35);
   }
+
+table td {
+  padding: 0px 5px;
+}

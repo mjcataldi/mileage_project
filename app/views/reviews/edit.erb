@@ -1,6 +1,0 @@
-<h2>Edit Review</h2>
-<form action="/reviews/<%= @review.id %>" method="post">
-  <input type="hidden" name="_method" value="put" />
-  <%= erb :"/reviews/_form_fields", layout:false %>
-  <input type="submit" value="Update Review" />
-</form>
