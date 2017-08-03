@@ -5,14 +5,17 @@ get '/distances' do
 end
 
 post "/distances" do
-  @distance = Distance.new
 
-  if @distance.save
-    redirect "/distances/#{@distance.id}"
-  else
-    @errors = @distance.errors.full_messages
-    erb :"/distances/new"
-  end
+  origin = "138 Abbot Avenue Worthington Ohio"
+  destination = "804 Washington Street Evanston IL"
+
+  origin.sub! " ", "%20"
+  destination.sub! " ", "%20"
+
+  uri = URI.parse("https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}")
+  # response = Net::HTTP.get_print(uri)
+  json_object = JSON.parse(response)
+  p json_object["rows"]["elements"]["distance"]["text"]
 
 end
 
