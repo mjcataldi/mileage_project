@@ -24,6 +24,12 @@
         <td><%= location.origin %></td>
         <td><%= location.destination %></td>
         <td><%= location.distance %></td>
+        <td>
+          <form class="button-link-form" action="/locations/<%= location.id %>" method="post">
+            <input type="hidden" name="_method" value="delete" />
+            <input class="button-link" style="color: red;" type="submit" value="Delete" />
+          </form>
+        </td>
       </tr>
     <% end %>
 

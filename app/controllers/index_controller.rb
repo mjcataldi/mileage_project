@@ -2,7 +2,6 @@ include ERB::Util
 
 get "/" do
 
-
   erb :"/index"
 end
 
@@ -19,18 +18,22 @@ post "/mileage" do
   response = Net::HTTP.get(uri)
   value = JSON.parse(response)["rows"][0]["elements"][0]["distance"]["text"]
 
-  @mileage = value
+  if logged_in?
+    @location = Location.create(
+        user_id: current_user.id,
+        origin: params[:origin],
+        destination: params[:destination],
+        distance: value.to_f
+        )
+  end
 
-  # if logged_in?
-  #   @location = Location.create(
-  #       user_id: current_user.id,
-  #       origin: params[:origin],
-  #       destination: params[:destination],
-  #       distance: value.to_f
-  #       )
+  redirect "/index"
+end
 
-  #   @locations = Location.find_by(user: current_user)
-  # end
+get "/index" do
+  if logged_in?
+    @locations = Location.where(user: current_user)
+  end
 
   erb :"/index"
 end
