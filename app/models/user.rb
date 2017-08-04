@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :distances
+  has_many :locations
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

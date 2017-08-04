@@ -21,6 +21,5 @@ end
 
 get '/sessions/:id' do
   session[:user_id] = nil
-  # sessions.delete(:user_id)
   redirect '/'
 end
