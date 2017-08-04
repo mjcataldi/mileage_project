@@ -18,6 +18,7 @@ require 'logger'
 require 'sinatra'
 require "sinatra/reloader" if development?
 
+require 'dotenv'
 require 'bcrypt'
 require 'faker'
 require 'erb'
